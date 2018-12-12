@@ -1,0 +1,6 @@
+<% if bookowner(@book) %>
+
+  <%= link_to "Edit", edit_book_path, class:"btn btn-primary" %>
+  <%= link_to "Destroy", @book, method: :delete, data: {confirm: "Are you sure?", disable_with: "Loading"}, class:"btn btn-danger" %>
+
+<% end %>

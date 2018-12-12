@@ -1,0 +1,43 @@
+
+<script>
+  function getPos(address, callback) {
+	var x = [];
+	var geocoder = new google.maps.Geocoder();
+
+	geocoder.geocode({'address': address}, function(results, status) {
+    if (status==google.maps.GeocoderStatus.OK) {
+  		x.push([results[0].geometry.location.lat(), results[0].geometry.location.lng()]);
+  		callback(x);
+    }
+    else {
+      console.log("get request failed");
+    }
+	});
+
+  };
+
+  function mainMap() {
+
+  var mapProp = {
+    // To centre worldwide, use 
+    // center: new google.maps.LatLng(30.344155, 11.127418),
+    // zoom: 12,
+    center: new google.maps.LatLng(22.3707241,114.0861579),
+    zoom: 11,
+  };
+  var map = new google.maps.Map(document.getElementById('map'), mapProp);
+
+  <% @rand.each do |c| %>
+    var q = <%= c.inspect.html_safe %>
+    getPos(q, function(z){
+      //console.log(z);
+      var marker = new google.maps.Marker({position: new google.maps.LatLng(z[0][0],z[0][1])});
+      marker.setMap(map);
+    });
+
+
+  <% end %>
+  }
+</script>
+  <% gmaplink = "https://maps.googleapis.com/maps/api/js?key="+ENV['GMAP_KEY']+"&callback=mainMap&sensor=false" %>  
+<script src= <%= gmaplink %>></script>

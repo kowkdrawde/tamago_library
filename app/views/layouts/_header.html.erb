@@ -1,0 +1,16 @@
+<header class="jumbotron">
+	<!-- Main component for a primary marketing message or call to action -->
+        
+		<div class="text-center jumbotrontext">
+			<h1> <%= get_brand_name %> </h1>
+			<h2> P2P Book Repository</h2>
+			
+			<p> <%= @count %> books available </p>
+		</div>
+
+		<div class="text-center jumbotronbtn">
+		  <%= link_to "Find books", books_path, class: "btn btn-lg btn-success" %>
+		  <%= link_to 'Share books', new_book_path, class: "btn btn-lg btn-default" %>
+		</div>
+
+</header>

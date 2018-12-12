@@ -1,0 +1,7 @@
+<%= render 'layouts/commonheader' %>
+
+<% if current_user.wanteds.empty? %>
+  <p> You do not have books wanted </p>
+<% else %>
+  <%= render 'books/listbooks' %>
+<% end %>

@@ -1,0 +1,55 @@
+<h1 class="text-center">Edit Profile</h1>
+
+<div class="row userform center-block">
+  <%= form_for(:user, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <%= f.label :firstname, :class=>"userformlabel" %>
+      <%= f.text_field :firstname, placeholder: " First Name", required: true, autofocus: true, :class=>"userformcell" %>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <%= f.label :lastname, :class=>"userformlabel" %>
+      <%= f.text_field :lastname, placeholder: " Last Name", required: true, :class=>"userformcell" %><br>
+    </div>
+    
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= f.label :email, :class=>"userformlabel" %>
+      <%= f.email_field :email, placeholder: " Email", required: true, :class=>"userformcell" %>
+    </div>
+
+    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+      <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+    <% end %>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= f.label "New password", :class=>"userformlabel" %><i> (leave blank if no change)</i>
+      <%= f.password_field :password, placeholder: " New password", autocomplete: "off", hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), :class=>"userformcell" %>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= f.label "Confirm new password", :class=>"userformlabel" %>
+      <%= f.password_field :password_confirmation, placeholder: " Confirm new password", autocomplete: "off", :class=>"userformcell" %>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <span><%= f.label :current_password, :class=>"userformlabel" %><i> (required to confirm changes)</i></span>
+      <%= f.password_field :current_password, placeholder: " Current Password", required: true, autocomplete: "off", :class=>"userformcell" %>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <br class="userformlabel">
+      <%= f.submit "Update", :class=>"btn btn-primary btn-block userformbtn" %>
+    </div>
+  <% end %>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <br class="userformlabel">
+      <%= link_to "Delete my account", user_registration_path, method: :delete, data: { confirm: "Are you sure?" }, :class=>"btn btn-danger btn-block userformbtn" %>
+      <br><br>
+    </div>
+
+</div>
+
+
+

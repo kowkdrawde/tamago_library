@@ -1,0 +1,22 @@
+<div class="col-xs-12 col-lg-6 lb">  
+
+  <%= link_to book, remote: true do %>
+    <div class="media thumbnail">
+    <div class="pull-left">
+    <%= image_tag book.image.url, class: "book-image" %>
+    </div>
+    <div class="media-body">
+    <p class="bookgist">Title:&nbsp;<strong><%= book.title %> </strong></p>
+    <p class="bookgist">Author: <i><%= book.author %></i></p>
+    <p></p>
+    <% if book.availability %>
+      <p class="bookgist book-avail"> Available at <%= "#{book.loc}, #{book.country}" %> </p>
+    <% else %>
+      <p class="bookgist book-notavail"> Not available </p>
+    <% end %>
+    <p class="bookgist"> <%= book.wanteds.count ||= "No" %> interested </p>
+    </div>
+    </div>
+  <% end %>
+
+</div>

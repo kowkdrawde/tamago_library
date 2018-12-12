@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+
+  <body style="max-width:400px;font-family:Arial,Helvetica,sans-serif;">
+    
+    <%= image_tag attachments['emailheader.jpg'].url, style: 'width:100%;height:auto' %>
+    <h3>Hi there!  You are matched with the book <em><%= @book.title %></em>! </h3> 
+
+    <p>Please keep connected.  Thank you for using <%= link_to ENV['BRAND'], ENV['HOME_URL'], target: "_blank" %>.</p>    
+
+    <div style="font-style:italic;"><%= render 'reminder' %></div>
+  </body>
+ 
+</html>

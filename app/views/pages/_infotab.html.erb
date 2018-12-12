@@ -1,0 +1,63 @@
+
+
+<ul class="nav nav-tabs" role="tablist">
+    <li role="presentation" class="infosubtab col-xs-4 active">
+        <%= link_to "What", "#what", role: "tab", :"data-toggle" => "tab", :"aria-controls" => "searcher" %>
+    </li>
+
+    <li role="presentation" class="infosubtab col-xs-4">
+        <%= link_to "How", "#how", role: "tab", :"data-toggle" => "tab", :"aria-controls" => "sharer" %>
+    </li>
+
+    <li role="presentation" class="infosubtab col-xs-4">
+        <%= link_to "Why", "#why", role: "tab", :"data-toggle" => "tab", :"aria-controls" => "sharer" %>
+    </li>
+
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+<br>
+    <div role="tabpanel" class="tab-pane active" id="what">
+        <h4>
+            <div class="col-xs-1 fa fa-book"></div>
+            <div class="col-xs-11"> A marketplace for sharing/getting real books </div>
+            <div class="col-xs-12"><br></div>
+            <div class="col-xs-1 fa fa-share-alt"></div>
+            <div class="col-xs-11"> It encourages "giving" and "sharing" </div>
+            <div class="col-xs-12"><br></div>
+            <div class="col-xs-1 fa fa-money"></div>
+            <div class="col-xs-11"> It is not developed for trading books </div>
+        </h4>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="how">
+        <h4>
+            <div class="col-xs-1 fa fa-heart-o"></div>
+            <div class="col-xs-11"> Make a "Want" request </div>
+            <div class="col-xs-12"><br></div>
+            <div class="col-xs-1 fa fa-link"></div>
+            <div class="col-xs-11"> Get a "Match" </div>
+            <div class="col-xs-12"><br></div>
+            <div class="col-xs-1 fa fa-envelope-o"></div>
+            <div class="col-xs-11"> Get connected by email </div>
+            <div class="col-xs-12"><br></div>
+            <div class="col-xs-1 fa fa-handshake-o"></div>
+            <div class="col-xs-11"> Self-arrange a meet-up/delivery </div>
+        </h4>
+    </div>
+
+    <div role="tabpanel" class="tab-pane" id="why">
+        <h4>
+            <div class="col-xs-1 fa fa-gift"></div>
+            <div class="col-xs-11"> Your old books pile could be others' treasure island </div>
+            <div class="col-xs-12"><br></div>
+            <div class="col-xs-1 fa fa-recycle"></div>
+            <div class="col-xs-11"> Some books are out-of-print </div>
+            <div class="col-xs-12"><br></div>
+            <div class="col-xs-1 fa fa-lightbulb-o"></div>
+            <div class="col-xs-11"> Knowledge is free so pass it on </div>
+        </h4>
+    </div>
+
+</div>

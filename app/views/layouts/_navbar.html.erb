@@ -1,0 +1,59 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <ul class="nav navbar-nav">
+        <li id="brand"><%= link_to '<span class="glyphicon glyphicon-home" title="home"></span>  '.html_safe+get_brand_name, root_path %></li>
+      </ul>
+      <button id="navbarToggle" type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#collapsable-nav" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      </ul>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="collapsable-nav">
+
+
+      <ul class="nav navbar-nav navbar-right">
+        <li id="books" class="navselector"><%= link_to '<span class="glyphicon glyphicon-book"></span> Books'.html_safe, books_path %></li>
+        <% if current_user %>
+          <li id="wanted" class="navselector"><%= link_to '<span class="glyphicon glyphicon-heart"></span> My Wanted'.html_safe, wanted_path %></li>
+          <li id="shelf" class="navselector"><%= link_to '<span class="glyphicon glyphicon-leaf"></span> My Shelf'.html_safe, shelf_path %></li>
+          <li id="profile" class="navselector"><%= link_to '<span class="glyphicon glyphicon-user"></span> Profile'.html_safe, edit_user_registration_path %></li>
+          <li><%= link_to '<span class="glyphicon glyphicon-log-out" data-target="#loginModal"></span> Log Out'.html_safe, destroy_user_session_path, method: :delete %></li>
+        <% else %>
+          <li class="hidden-sm hidden-xs"><%= link_to '<span class="glyphicon glyphicon-log-in"></span> Login'.html_safe, '', 'data-toggle': "modal", 'data-target': "#loginModal" %></li>
+          <li class="hidden-md hidden-lg"><%= link_to '<span class="glyphicon glyphicon-log-in"></span> Login'.html_safe, new_user_session_path %></li>
+          <li id="signup"><%= link_to '<span class="glyphicon glyphicon-tag"></span> Sign Up'.html_safe, new_user_registration_path %></li>
+<!-- see modal below -->
+        <% end %>
+        <div id="loginModal" class="modal fade" role="dialog">
+            <div class="modal-dialog"><!-- Modal content -->
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title"> Login </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div id="loginform" class="center-block"> 
+                            <%= form_for(:user, url: new_user_session_path) do |f| %>
+                                <div class="formcell"><%= f.email_field :email, placeholder: " Email", autocomplete: "off", autofocus: true, :class=> "emailpw" %></div>
+                                <div class="formcell"><%= f.password_field :password, placeholder: " Password", autocomplete: "off", :class=> "emailpw" %></div>
+                                <div class="formcell"><%= f.submit "Login", :class => "btn btn-primary btn-sm emailpw emailpwbtn" %></div>
+                            <% end %> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!-- end modal -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+

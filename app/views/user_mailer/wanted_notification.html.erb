@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+  </head>
+
+  <body style="max-width:400px;font-family:Arial,Helvetica,sans-serif;">
+
+    <%= image_tag attachments['emailheader.jpg'].url, style: 'width:100%;height:auto' %>
+    <h3>Hi <%= "#{@user.firstname} #{@user.lastname}" %>!</h3> 
+
+    <p><%= "#{@wanter.firstname} #{@wanter.lastname}" %> has wanted your book <strong><%= "#{@book.title}" %></strong> because <%= '"' + @wantreason + '"'%></p>
+    
+    <p>Check out the book for sharing and matching at <%= link_to ENV['BRAND'], ENV['HOME_URL'], target: "_blank" %></p>
+
+    <div style="font-style:italic;"><%= render 'reminder' %></div>
+
+  </body>
+
+</html>

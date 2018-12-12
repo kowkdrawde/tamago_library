@@ -1,0 +1,26 @@
+
+<div class="row">
+
+	<div class="col-sm-6 hidden-xs" id="pplframe">
+		<%= image_tag "development/ppl.jpg", id:"ppl", alt:"P2P Book Repository" %>
+	</div>
+	<div class="col-xs-12 col-sm-6 infotab">
+		<%= render "infotab" %>
+	</div>
+</div>
+
+<div class="row">
+
+	<div class="col-xs-12 col-sm-4" id="randbook">
+		
+		<h4>Books are available at</h4>
+		<% @rand.each do |loc| %>
+		<p><span class="fa fa-globe"></span><%= "  "+loc %></p>
+		<% end %>
+	</div>
+
+	<div class="col-xs-12 col-sm-8" id="map">
+		<%= render "map" %>
+	</div>
+
+</div>

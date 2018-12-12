@@ -1,0 +1,28 @@
+
+<div class="row">
+  <br><br>
+
+
+  <div class="col-xs-12 col-sm-4 col-sm-push-4 text-center" id="searchbar">
+    <%= form_tag books_path, method: "get" do %>
+	  <%= text_field_tag :search, params[:search], placeholder: " Find a book", :autocomplete => 'off', class: "search" %>
+	  <%= button_tag :submit, class: "btn btn-success" do  %>
+      <span class="fa fa-search"></span>
+    <% end %>
+    
+    <%= link_to '<span class="fa fa-share-alt"></span>'.html_safe, new_book_path, class: "btn btn-default hidden-sm hidden-md hidden-lg", id: "sharebtns" if current_user %>
+	  <% end %>
+
+  </div>
+
+   <div class="col-xs-12 col-sm-4 col-sm-pull-4 text-center" id="bookpaginate">
+    <%= render "layouts/paginate", table: @books, table_page: "books_page" %>&nbsp;&nbsp;&nbsp;
+  </div>
+
+  <div class="col-sm-4 hidden-xs text-center">
+    <%= link_to '<span class="fa fa-share-alt"></span>'.html_safe+"&nbsp; Share book".html_safe, new_book_path, class: "btn btn-default", id: "sharebtn" if current_user %>
+  </div>
+
+</div>
+
+<br>

@@ -1,0 +1,66 @@
+<div class="row userform center-block">
+  <%= form_for(@book) do |f| %>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <%= f.label :title, class:"userformlabel" %>
+      <%= f.text_field :title, placeholder: " Book Title", required: true, autofocus: true, class:"userformcell" %>
+    </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+      <%= f.label :author, class:"userformlabel" %>    
+      <%= f.text_field :author, placeholder: " Author", required: true, class:"userformcell" %>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= f.label "Country", class:"userformlabel" %>
+      <p class="userformcell">
+      <%= f.select :country, Book.countries, include_blank: "Please select", required: false %></p>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= f.label "Location", class:"userformlabel" %>    
+      <%= f.text_field :loc, placeholder: " Enter city or more specific location", required: false, class:"userformcell" %>
+    </div>
+    
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= f.label :isbn, class:"userformlabel" %>
+      <%= f.text_field :isbn, placeholder: " ISBN No. if any", required: false, class:"userformcell" %>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= f.label :tags, class:"userformlabel" %>
+      <%= f.text_field :str_tags, placeholder: " Separated by spaces", required: false %>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <%= f.label :image, class:"userformlabel" %> 
+      <%= f.file_field :image, required: false %>
+    </div>
+
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 userformbtn">
+      <%= f.label "Open for sharing?", class:"userformlabel" %>
+      <%= f.radio_button :availability, true, id: "book_available", required: true %> 
+      <%= f.label :availability, "Yes", for: :book_available, class:"btn btn-success btn-sm" %>
+
+      <%= f.radio_button :availability, false, id: "book_unavailable", required: true %> 
+      <%= f.label :availability, "No", for: :book_unavailable, class:"btn btn-danger btn-sm" %>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <%= f.submit " Save Book", class:"btn btn-primary btn-block userformbtn", data: {disable_with: "Loading"} %>
+    </div>
+
+    <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
+      <%= link_to "Back", :back, :class=>"btn btn-default btn-block userformbtn" %>
+      <br><br>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  $('#book_str_tags').tagsinput({
+   confirmKeys: [32], //spacebar
+  });
+
+
+</script>

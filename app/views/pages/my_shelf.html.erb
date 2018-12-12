@@ -1,0 +1,7 @@
+<%= render 'layouts/commonheader' %>
+
+<% if current_user.books.empty? %>
+  <p> You do not have any books shared </p>
+<% else %>
+  <%= render 'books/listbooks' %>
+<% end %>

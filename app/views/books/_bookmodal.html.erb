@@ -1,0 +1,76 @@
+
+<div class="modal-dialog" role="document">
+  <div class="modal-content">
+    
+    <div class="modal-header">
+      <h3 class="modal-title"><strong><%= @book.title %></strong> by <i><%= @book.author %></i> <%= render 'bookowner' %>
+
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </h3>
+    </div>
+    
+    <div class="modal-body" id="book-modal-body">
+
+      <div class="row">
+        <div class="media">
+
+        <div class="pull-left">
+          <%= image_tag @book.image.url, class: "book-image modal-book-image" %>
+        </div>
+
+        <div class="media-body">
+          <p class="bookgist"> Sharer: <%= link_to "#{@book.user.firstname} #{@book.user.lastname}", books_path(search: @book.user_id) %></p>
+          <% if @book.availability %>
+            <p class="bookgist"><span class="book-avail"> Available at </span> <%= link_to "#{@book.loc} #{@book.country}", "http://maps.google.com/?q=#{@book.loc}+#{@book.country}", target: "_blank", rel: "nofollow", class: "bookloc" %></p>
+          <% else %>
+            <p class="bookgist book-notavail"> Not available </p>
+          <% end %>
+          <p class="bookgist"> No. of interested user: <%= @book.wanteds.count ||= 0 %></p>
+          <p class="bookgist"> Tags: <%= render @book.booktags %></p>
+        </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <div class="modal-footer" id="modalfooter">
+
+        <% if user_signed_in? %>
+
+          <% if bookowner(@book) %>
+
+            <div id="wanteds" class="row"><%= render @wanteds %></div>
+            <div id="wpn" class="col-xs-12"><%= render "layouts/paginate", table: @wanteds, table_page: "wanteds_page" %></div>
+            <div class="col-xs-12"><br></div>
+            <div id="ldw"></div> 
+
+          <% else  %>
+            <div class="bookgist">
+            <% if has_matched_user(@book, current_user) %>
+              <%= link_to "Matched", "", class:"btn btn-success disabled" %>
+            <% elsif has_want(@book) %>
+              <%= link_to "Wanted", "", class:"btn btn-primary disabled" %>
+            <% else %>
+              <%= form_for(@book, url: want_book_path, method: :post, remote: true) do |f| %>
+              <%= f.text_field :wantreason, placeholder: "Why do you want this book?", required: true, class:"want_box", data: {disable_with: ""} %>
+              <%= f.hidden_field :book_id, required: true, value: @book.id %>
+              <%= f.hidden_field :user_id, required: true, value: current_user.id %>
+                <%= f.submit "Want it", class:"btn btn-primary", data: {disable_with: "Loading"} %>
+            <% end %>
+            <% end %>
+            </div>
+          <% end %>
+
+        <% else %>
+
+          <div class="bookgist"><%= link_to "Login", new_user_session_path, class:"btn btn-primary btn-xs"%> or<%= link_to "Sign up", new_user_registration_path, class:"btn btn-default btn-xs" %> to get access</div>
+
+        <% end %>
+
+    </div>
+
+  </div>
+</div>

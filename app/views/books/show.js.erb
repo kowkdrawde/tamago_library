@@ -1,0 +1,5 @@
+
+$('#bookmodal').modal('show');
+$('#bookmodal').html('<%= j render "bookmodal" %>');
+
+$('#bookmodal .pagination a').attr('data-remote', 'true'); // this is the key for paginating wanteds in modal

@@ -1,0 +1,15 @@
+<div class="col-xs-12">
+	<div class="col-xs-9 want_line">
+	  <%= link_to "#{wanted.user.firstname} #{wanted.user.lastname}: ", books_path(search: wanted.user.id), target: "_blank" %>
+	  <%= wanted.wantreason %>
+	  <i><%= wanted.wanted_on %></i>
+	</div>
+	<div class="col-xs-3">  
+	  <% if !has_matched_user(@book, wanted.user) %>
+	    <%= link_to "Match", match_book_path(wanter: wanted.user, wanteds_page: params[:wanteds_page]), method: :post, remote: true, class:"btn btn-success btn-xs", data: {disable_with: "Loading"} %>
+	  <% else %>
+	    <div class="btn btn-success btn-xs disabled"> Matched</div>
+	  <% end %>
+		
+	</div>
+</div>

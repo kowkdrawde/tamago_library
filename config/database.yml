@@ -12,9 +12,9 @@ default: &default
 development:
   adapter: postgresql
   encoding: unicode
-  database: re_bookshare_dev
+  database: <%= ENV['DB_name'] %>
   pool: 5
-  username: edward
+  username: <%= ENV['DB_user'] %>
 
 
 # Warning: The database defined as "test" will be erased and

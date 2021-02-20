@@ -43,12 +43,12 @@ Rails.application.configure do
   config.action_mailer.default_url_options = {host: "http://localhost:3000"}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: "smtp.sendgrid.net",
-    port: "587",
-    domain: "sendgrid.com",
-    user_name: ENV['SG_USERNAME'],
-    password: ENV['SG_PW'],
-    authentication: :login,
+    address: "smtp.gmail.com",
+    port: 587,
+    domain: "gmail.com",
+    user_name: ENV['GM_USERNAME'],
+    password: ENV['GM_APP'],
+    authentication: :plain,
     enable_strattls_auto: true
   }
 
@@ -60,7 +60,6 @@ Rails.application.configure do
       access_key_id: ENV['AWS_ACCESS_KEY_ID'],
       secret_access_key: ENV['AWS_SECRET_ACCESS_KEY']
     },
-
     s3_region: ENV['S3_REGION']
 
   }
